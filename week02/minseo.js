@@ -1,4 +1,4 @@
-alert("Welcome to minseo info page!!");
+// alert("Welcome to minseo info page!!");
 
 const mainbox = document.getElementById("mainbox");
 
