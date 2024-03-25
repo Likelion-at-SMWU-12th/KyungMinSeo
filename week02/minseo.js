@@ -1,4 +1,8 @@
-// alert("Welcome to minseo info page!!");
+const input_name = prompt("이름을 입력해주세요!");
+
+if (input_name != null) {
+  document.getElementById("name").innerHTML = input_name;
+}
 
 const mainbox = document.getElementById("mainbox");
 
