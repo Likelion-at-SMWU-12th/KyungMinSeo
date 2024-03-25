@@ -4,6 +4,13 @@
   font-family: "Noto Sans KR", sans-serif;
 }
 
+header {
+  background-color: black;
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
 ul {
   padding-left: 27px;
 }
@@ -73,8 +80,6 @@ a:hover {
 
 #mainbox {
   width: 610px;
-  padding: 30px;
-  margin: 30px;
   margin-left: auto;
   margin-right: auto;
   border: 1px solid #ebebeb;
@@ -103,4 +108,13 @@ a:hover {
 #a-button-section {
   margin-left: 7px;
   margin-top: 20px;
+}
+
+#contentbox {
+  margin: 10px 30px 30px 30px;
+}
+
+#hello-msg {
+  color: white;
+  font-size: 12px;
 }
