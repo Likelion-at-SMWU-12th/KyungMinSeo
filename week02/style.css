@@ -49,7 +49,7 @@ a {
   text-decoration-line: none;
   color: white;
   background-color: black;
-  padding: 12px;
+  padding: 5px 10px;
   border-radius: 15px;
   font-weight: 500;
   font-size: 12px;
@@ -98,4 +98,9 @@ a:hover {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+#a-button-section {
+  margin-left: 7px;
+  margin-top: 20px;
 }
