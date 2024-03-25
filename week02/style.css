@@ -4,6 +4,10 @@
   font-family: "Noto Sans KR", sans-serif;
 }
 
+ul {
+  padding-left: 27px;
+}
+
 img {
   box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.1);
   border-radius: 50%;
