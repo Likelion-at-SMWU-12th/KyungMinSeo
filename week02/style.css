@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 
 * {
   font-family: "Noto Sans KR", sans-serif;
@@ -40,6 +41,9 @@ h2 {
   background-color: rgba(255, 177, 75, 0.675);
   padding: 5px 0px 5px 10px;
   border-radius: 5px;
+
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
 }
 
 input {
@@ -60,6 +64,8 @@ a {
   border-radius: 15px;
   font-weight: 500;
   font-size: 12px;
+
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 a:hover {
