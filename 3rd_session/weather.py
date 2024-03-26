@@ -2,7 +2,7 @@ import requests
 import json
 
 city = "Yongin"
-apikey = "3a6039d196040082907e6bd63aeb18e7"
+apikey = ""
 lang="kr"
 
 api = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={apikey}&lang={lang}&units=metric"
