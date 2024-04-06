@@ -1,9 +1,75 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>myHobby</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      header {
+        background-color: black;
+        color: white;
+        width: 100%;
+      }
+      #title {
+        margin: 0px;
+        padding: 10px;
+        font: 60px;
+      }
+      img {
+        width: 80%;
+      }
+      #content {
+        width: 100%;
+      }
+      #hobby_title {
+        padding: 20px;
+        color: rgb(94, 94, 94);
+        margin: 0px;
+        text-decoration: underline;
+      }
+      #hobby_name {
+        color: black;
+      }
+      .hobby_description {
+        padding-left: 20px;
+        margin: 0px;
+      }
+      li {
+        list-style: none;
+      }
+    </style>
   </head>
-  <body></body>
+
+  <body>
+    <header>
+      <h3 id="title">kyungminseo</h3>
+    </header>
+    <section id="content">
+      <section>
+        <h3 id="hobby_title">
+          저의 취미는 <span id="hobby_name"> "지도에 별 찍기" </span> 입니다 ⭐️
+        </h3>
+        <p class="hobby_description">
+          주변에 있는 곳들을 지도에서 찾아보면서 이곳 저곳 찾아보는게
+          취미입니다!
+        </p>
+        <p class="hobby_description">
+          이쁜 곳들이 참 많은데, 잘 가보지 못하는게 아쉽네요 😅
+        </p>
+        <ul>
+          <li>💛 카페/브런치/베이커리/디저트</li>
+          <li>🩵 음식/밥</li>
+          <li>🧡 주점/펍/바</li>
+          <li>🩶 플레이스/쇼핑/관람</li>
+        </ul>
+      </section>
+      <section style="display: flex; justify-content: center">
+        <img src="{% static 'map.png' %}" />
+      </section>
+    </section>
+  </body>
 </html>
