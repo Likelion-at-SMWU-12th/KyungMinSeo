@@ -14,5 +14,7 @@ def url_view(request):
     return HttpResponse('<h1>url_views</h1>')
 
 def url_parameter_view(request, username):
-    print(username)
-    return HttpResponse()
+    print('url_parameter_view()')
+    print(f'username: {username}')
+    print(f'request.GET: {request.GET}')
+    return HttpResponse(username)
