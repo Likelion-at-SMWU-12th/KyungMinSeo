@@ -22,5 +22,11 @@ class PostModelAdmin(admin.ModelAdmin):
     search_help_text=['게시판번호, 작성자 검색이 가능합니다.']
     readonly_fields=['view_count', 'created_at']
     inlines=[CommentInLine]
+    actions=['report']
+
+    def report(modeladmin, request, queryset):
+        for item in queryset:
+            item.contentn='운영규칙 위반으로 인한 게시글 삭제 처리'
+            item.save()
 
 admin.site.register(Post, PostModelAdmin)
