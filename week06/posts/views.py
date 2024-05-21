@@ -18,3 +18,9 @@ def url_parameter_view(request, username):
     print(f'username: {username}')
     print(f'request.GET: {request.GET}')
     return HttpResponse(username)
+
+def function_view(request):
+    print(f'request.method: {request.method}')
+    print(f'request.GET: {request.GET}')
+    print(f'request.POST: {request.POST}')
+    return render(request, 'view.html')
