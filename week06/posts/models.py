@@ -18,8 +18,8 @@ class Comment(models.Model):
     post= models.ForeignKey(to='Post',on_delete=models.CASCADE, verbose_name='게시글')
     writer=models.ForeignKey(to=User, on_delete=models.CASCADE, verbose_name='작성자', null=True)
 
-# class Profile(models.Model):
-#     profile_img = models.ImageField(verbose_name='프로필사진')
-#     profile_name = models.TextField('닉네임')
-#     birthday = models.DateField('생년월일')
-#     profile_comment = models.TextField('한줄소개')
+class Profile(models.Model):
+    profile_img = models.ImageField(verbose_name='프로필사진')
+    profile_name = models.TextField('닉네임')
+    birthday = models.DateField('생년월일')
+    profile_comment = models.TextField('한줄소개')
