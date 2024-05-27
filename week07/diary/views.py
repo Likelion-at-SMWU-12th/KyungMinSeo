@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from django.views.generic import ListView
-from .models import Write_Diary
+from .models import Write_Todo
 
 # Create your views here.
 
@@ -15,7 +15,7 @@ def function_view(request, date, month):
 
 
 class class_view(ListView):
-    model=Write_Diary
+    model=Write_Todo
     template_name='todo_detail.html'
 
     def get_context_data(self, **kwargs):

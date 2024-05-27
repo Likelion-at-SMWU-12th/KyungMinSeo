@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Write_Diary
+from .models import Write_Todo
 
 # Register your models here.
-admin.site.register(Write_Diary)
+admin.site.register(Write_Todo)
