@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from diary.views import function_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('diary/<int:month>/<int:date>', function_view),
 ]
