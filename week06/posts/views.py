@@ -29,6 +29,24 @@ def function_view(request):
     return render(request, 'view.html')
 
 
+def index(request):
+    return render(request, 'index.html')
+
+def post_list_view(request):
+    return render(request, 'posts/post_list.html')
+
+def post_detail_view(request, id):
+    return render(request, 'posts/post_detail.html')
+
+def post_create_view(request):
+    return render(request, 'posts/post_form.html')
+
+def post_update_view(request, id):
+    return render(request, 'posts/post_update.html')
+
+def post_delete_view(request, id):
+    return render(request, 'posts/post_confirm_delete.html')
+
 
 class class_view(ListView):
     model=Post
