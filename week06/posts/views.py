@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 
 from django.views.generic import ListView
 from .models import Post
+from .forms import PostBasedForm
 
 # Create your views here.
 # def url_view(request):
@@ -28,7 +29,6 @@ def function_view(request):
     print(f'request.POST: {request.POST}')
     return render(request, 'view.html')
 
-
 def index(request):
     return render(request, 'index.html')
 
@@ -47,6 +47,14 @@ def post_update_view(request, id):
 def post_delete_view(request, id):
     return render(request, 'posts/post_confirm_delete.html')
 
+# 3rd_hw
+def post_form_view(request):
+    if request.method == "GET":
+        form = PostBasedForm()
+        context = {'form' : form}
+        return render(request, 'posts/post_form2.html', context)
+    else :
+        return redirect('index')
 
 class class_view(ListView):
     model=Post
