@@ -53,7 +53,17 @@ def post_form_view(request):
         form = PostBasedForm()
         context = {'form' : form}
         return render(request, 'posts/post_form2.html', context)
-    else :
+    else : # GET 요청이 아닐때(POST 처리)
+        form = PostBasedForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            Post.objects.create(
+                image = form.cleaned_data['image'],
+                content = form.cleaned_data['content'],
+                writer = request.user
+            )
+        else:
+            return redirect('post:post-new')
         return redirect('index')
     
 def post_create_form_view(request):
@@ -61,7 +71,6 @@ def post_create_form_view(request):
         form = PostModelForm()
         context = {'form' : form}
         return render(request, 'posts/post_form2.html', context)
-    
 
 class class_view(ListView):
     model=Post
