@@ -28,6 +28,6 @@ urlpatterns = [
 
     path('', index, name='index'),
     path('posts/', include('posts.urls', namespace='posts')),
-
+    path('accounts/', include('accounts.urls', namespace='accounts'))
 
 ]
