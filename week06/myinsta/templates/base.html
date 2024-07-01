@@ -9,9 +9,10 @@
     <div>{% block content %} {% endblock %}</div>
     <div>
       {%if request.user.is_authenticated%}
-      <span>로그인 상태 : {{request.user.username}}</span>
+      <a href="{%url 'accounts:logout'%}">로그아웃</a>
       {%else%}
-      <span>비로그인 상태</span>
+      <a href="{%url 'accounts:login'%}">로그인</a>
+      <a href="{%url 'accounts:logout'%}">로그아웃</a>
       {%endif%}
     </div>
   </body>
