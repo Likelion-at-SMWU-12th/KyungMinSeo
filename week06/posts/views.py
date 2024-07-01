@@ -3,7 +3,7 @@ from django.http import HttpResponse, JsonResponse
 
 from django.views.generic import ListView
 from .models import Post
-from .forms import PostBasedForm
+from .forms import PostBasedForm, PostModelForm
 
 # Create your views here.
 # def url_view(request):
@@ -55,6 +55,13 @@ def post_form_view(request):
         return render(request, 'posts/post_form2.html', context)
     else :
         return redirect('index')
+    
+def post_create_form_view(request):
+    if request.method == "GET":
+        form = PostModelForm()
+        context = {'form' : form}
+        return render(request, 'posts/post_form2.html', context)
+    
 
 class class_view(ListView):
     model=Post
