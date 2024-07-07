@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 # from .forms import SignUpForm
 # from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
@@ -111,4 +111,29 @@ def login(request):
     else:
         return Response({"이름 혹은 비밀번호가 잘못 입력 되었습니다."}, status=status.HTTP_401_UNAUTHORIZED)
 
+# 로그아웃
+@api_view(['POST'])
+def logout(request):
+    username = request.data.get('username')
+    password = request.data.get('password')
+    user = authenticate(request, username=username, password=password)
+    
+    if user is not None:
+        auth_logout(request) 
+        return Response({"로그아웃 성공"}, status=status.HTTP_200_OK)
+    else:
+        return Response({"이름 혹은 비밀번호가 잘못 입력 되었습니다."}, status=status.HTTP_401_UNAUTHORIZED)
 
+# 사용자 탈퇴
+@api_view(['DELETE'])
+def deleteUser(request):
+    username = request.data.get('username')
+    password = request.data.get('password')
+    user = authenticate(request, username=username, password=password)
+    
+    if user is not None:
+        user.delete()
+        auth_logout(request) 
+        return Response({"탈퇴 성공"}, status=status.HTTP_200_OK)
+    else:
+        return Response({"이름 혹은 비밀번호가 잘못 입력 되었습니다."}, status=status.HTTP_401_UNAUTHORIZED)
