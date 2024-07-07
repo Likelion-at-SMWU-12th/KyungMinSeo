@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from .forms import SignUpForm
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login, logout
+# from .forms import SignUpForm
+# from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
@@ -9,7 +9,8 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
-from .serializers import SignUpSerializer
+
+from .serializers import SignUpSerializer, LoginSerializer
 
 # Create your views here.
 
@@ -96,3 +97,18 @@ def getUserInfo(request):
     
     except User.DoesNotExist:
         return Response("해당 username을 가진 사용자가 없습니다.", status=status.HTTP_404_NOT_FOUND)
+
+# 로그인
+@api_view(['POST'])
+def login(request):
+    username = request.data.get('username')
+    password = request.data.get('password')
+    user = authenticate(request, username=username, password=password)
+    
+    if user is not None:
+        auth_login(request, user) 
+        return Response({"로그인 성공"}, status=status.HTTP_200_OK)
+    else:
+        return Response({"이름 혹은 비밀번호가 잘못 입력 되었습니다."}, status=status.HTTP_401_UNAUTHORIZED)
+
+
