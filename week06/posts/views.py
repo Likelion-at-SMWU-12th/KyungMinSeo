@@ -8,7 +8,7 @@ from rest_framework.decorators import api_view
 from django.views.generic import ListView
 from .models import Post
 from .forms import PostBasedForm, PostModelForm
-from .serializers import PostModelSerializer
+from .serializers import PostModelSerializer, PostListSerializer
 
 # Create your views here.
 # def url_view(request):
@@ -82,9 +82,9 @@ class class_view(ListView):
     template_name='cbv_view.html'
 
 # 4th seminar
-class PostModelViewSet(ModelViewSet):
-    queryset = Post.objects.all()
-    serializer_class = PostModelSerializer
+# class PostModelViewSet(ModelViewSet):
+#     queryset = Post.objects.all()
+#     serializer_class = PostModelSerializer
 
 @api_view(['POST'])
 def calculator(request):
@@ -113,4 +113,7 @@ def calculator(request):
     return Response(data)
     
 
-    
+# 5th seminar
+class PostModelViewSet(ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostListSerializer

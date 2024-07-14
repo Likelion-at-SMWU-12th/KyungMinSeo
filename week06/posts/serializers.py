@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from .models import Post
+from .models import Post, User
 
 class PostModelSerializer(ModelSerializer):
     class Meta:
@@ -7,3 +7,16 @@ class PostModelSerializer(ModelSerializer):
         fields = '__all__'
         
 
+class PostListSerializer(PostModelSerializer):
+    class Meta(PostModelSerializer.Meta):
+        fields = ['id', 'writer','contentn','created_at','view_count']
+        depth = 1
+
+class PostCreateSerializer(PostModelSerializer):
+    class Meta(PostModelSerializer.Meta):
+        fields = ['image', 'contentn']
+
+class UserModelSerializer(ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['username','email','date_joined']
