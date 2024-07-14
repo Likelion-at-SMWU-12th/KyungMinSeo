@@ -19,7 +19,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.urls import path, include
 from posts.views import url_view, url_parameter_view, function_view, class_view
-from posts.views import index, calculator, PostListView, PostRetrieveView
+from posts.views import index, calculator, PostListCreateView, PostRetrieveUpdateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,8 +29,8 @@ urlpatterns = [
     path('cbv/', class_view.as_view()),
 
     path('', index, name='index'),
-    path('posts/', PostListView.as_view()),
-    path('posts/<int:pk>/', PostRetrieveView.as_view()),
+    path('posts/', PostListCreateView.as_view()),
+    path('posts/<int:pk>/', PostRetrieveUpdateView.as_view()),
     path('accounts/', include('accounts.urls', namespace='accounts')),
 
     path('calculator/', calculator),

@@ -119,10 +119,17 @@ class PostModelViewSet(ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostListSerializer
 
-class PostListView(generics.ListAPIView):
+# 게시글 목록 보기 + 생성
+class PostListCreateView(generics.ListAPIView, generics.CreateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostListSerializer
 
-class PostRetrieveView(generics.RetrieveAPIView):
+# 게시글 상세 보기
+class PostRetrieveUpdateView(generics.RetrieveAPIView, generics.UpdateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostRetrieveSerializer
+
+# 게시글 수정
+# class PostUpdateView(generics.UpdateAPIView):
+#     queryset = Post.objects.all()
+#     serializer_class = PostListSerializer
