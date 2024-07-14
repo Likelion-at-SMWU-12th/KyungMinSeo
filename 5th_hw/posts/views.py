@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
+from django_filters.rest_framework import DjangoFilterBackend
 
 from .models import Post, Comment
 from .serializers import PostSerializer, CommentSerializer
@@ -10,6 +11,10 @@ from .serializers import PostSerializer, CommentSerializer
 class PostModelViewSet(ModelViewSet):
     queryset=Post.objects.all()
     serializer_class=PostSerializer
+
+    # 카테고리로 검색 필드 설정
+    filter_backends = [DjangoFilterBackend] 
+    filterset_fields = ['post_writer_id']
 
 # 댓글 뷰셋
 class CommentModelViewSet(ModelViewSet):
