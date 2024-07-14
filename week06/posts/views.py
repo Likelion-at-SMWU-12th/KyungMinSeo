@@ -125,7 +125,7 @@ class PostListCreateView(generics.ListAPIView, generics.CreateAPIView):
     serializer_class = PostListSerializer
 
 # 게시글 상세 보기
-class PostRetrieveUpdateView(generics.RetrieveAPIView, generics.UpdateAPIView):
+class PostRetrieveUpdateView(generics.RetrieveAPIView, generics.UpdateAPIView, generics.DestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostRetrieveSerializer
 
