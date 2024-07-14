@@ -19,7 +19,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.urls import path, include
 from posts.views import url_view, url_parameter_view, function_view, class_view
-from posts.views import index, calculator, PostListCreateView, PostRetrieveUpdateView, PostModelViewSet
+from posts.views import index, calculator, PostListCreateView, PostRetrieveUpdateView, PostModelViewSet, login_view
 
 from rest_framework import routers
 router = routers.DefaultRouter()
@@ -28,6 +28,9 @@ router.register('posts', PostModelViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
+    path('login/', login_view),
+
+
     # path('url/', url_view),
     # path('url/<str:username>/', url_parameter_view), # 분기
     # path('fbv/', function_view),
