@@ -11,6 +11,7 @@ class Post(models.Model):
     post_created_at = models.DateTimeField(verbose_name='작성일', auto_now_add=True)
     post_writer_id = models.ForeignKey(to=User, on_delete=models.CASCADE, verbose_name='글작성자', null=True, blank=True)
 
+
 # 댓글 모델
 class Comment(models.Model):
     comment_content = models.TextField(verbose_name='댓글 내용')
