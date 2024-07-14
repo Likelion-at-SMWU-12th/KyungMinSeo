@@ -20,3 +20,7 @@ class UserModelSerializer(ModelSerializer):
     class Meta:
         model = User
         fields = ['username','email','date_joined']
+
+class PostRetrieveSerializer(PostModelSerializer):
+    class Meta(PostModelSerializer.Meta):
+        depth = 1

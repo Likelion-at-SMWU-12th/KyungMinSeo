@@ -3,12 +3,13 @@ from django.http import HttpResponse
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework import generics
 
 
 from django.views.generic import ListView
 from .models import Post
 from .forms import PostBasedForm, PostModelForm
-from .serializers import PostModelSerializer, PostListSerializer
+from .serializers import PostModelSerializer, PostListSerializer, PostRetrieveSerializer
 
 # Create your views here.
 # def url_view(request):
@@ -117,3 +118,11 @@ def calculator(request):
 class PostModelViewSet(ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostListSerializer
+
+class PostListView(generics.ListAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostListSerializer
+
+class PostRetrieveView(generics.RetrieveAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostRetrieveSerializer
