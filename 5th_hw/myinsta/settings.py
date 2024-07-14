@@ -40,6 +40,10 @@ INSTALLED_APPS = [
 
     # 내부 앱
     'posts',
+
+    # DRF
+    'rest_framework',
+
 ]
 
 MIDDLEWARE = [
