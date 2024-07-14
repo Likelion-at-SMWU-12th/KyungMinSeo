@@ -2,14 +2,14 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, action
 from rest_framework import generics
 
 
 from django.views.generic import ListView
 from .models import Post
 from .forms import PostBasedForm, PostModelForm
-from .serializers import PostModelSerializer, PostListSerializer, PostRetrieveSerializer
+from .serializers import PostModelSerializer, PostListSerializer, PostRetrieveSerializer, CommentListModelSerializer
 
 # Create your views here.
 # def url_view(request):
@@ -119,6 +119,13 @@ class PostModelViewSet(ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostListSerializer
 
+    @action(detail=True, methods=['GET'])
+    def get_comment_all(self, request, pk=None):
+        post = self.get_object()
+        comment_all = post.comment_set.all()
+        serializer = CommentListModelSerializer(comment_all, many=True)
+        return Response(serializer.data)
+
 # 게시글 목록 보기 + 생성
 class PostListCreateView(generics.ListAPIView, generics.CreateAPIView):
     queryset = Post.objects.all()
@@ -133,3 +140,4 @@ class PostRetrieveUpdateView(generics.RetrieveAPIView, generics.UpdateAPIView, g
 # class PostUpdateView(generics.UpdateAPIView):
 #     queryset = Post.objects.all()
 #     serializer_class = PostListSerializer
+
