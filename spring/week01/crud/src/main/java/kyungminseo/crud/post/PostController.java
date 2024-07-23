@@ -35,5 +35,19 @@ public class PostController {
         logger.info("in read one");
         return this.postList.get(id);
     }
+
+    @PostMapping("update")
+    public void updatePost(
+            @RequestParam("id") int id,
+            @RequestBody PostDto postDto
+    ) {
+        PostDto targetPost = this.postList.get(id);
+        if(postDto.getTitle() != null) {
+            targetPost.setTitle(postDto.getTitle());
+        }
+        if(postDto.getContent()!=null){
+            targetPost.setContent(postDto.getContent());
+        }
+    }
 }
 
