@@ -42,12 +42,13 @@ public class PostController {
             @RequestBody PostDto postDto
     ) {
         PostDto targetPost = this.postList.get(id);
-        if(postDto.getTitle() != null) {
+        if (postDto.getTitle() != null) {
             targetPost.setTitle(postDto.getTitle());
         }
-        if(postDto.getContent()!=null){
+        if (postDto.getContent() != null) {
             targetPost.setContent(postDto.getContent());
         }
+        this.postList.set(id, targetPost);
     }
 }
 
