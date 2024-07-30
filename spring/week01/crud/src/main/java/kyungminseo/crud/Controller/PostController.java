@@ -1,5 +1,6 @@
 package kyungminseo.crud.Controller;
 
+import kyungminseo.crud.DTO.MemberDto;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,5 +21,10 @@ public class PostController {
             sb.append(map.getKey() + " " + map.getValue()+ "\n");
         });
         return sb.toString();
+    }
+
+    @PostMapping(value = "/member2")
+    public String postMemberDto(@RequestBody MemberDto memberDto) {
+        return memberDto.toString();
     }
 }
