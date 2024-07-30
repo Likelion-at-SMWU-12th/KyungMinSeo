@@ -19,4 +19,12 @@ public class GetController {
     public String getVariable1(@PathVariable("variable") String var) {
         return var;
     }
+
+    @GetMapping(value = "/request1")
+    public String GetRequestParam1(
+            @RequestParam String name,
+            @RequestParam String email,
+            @RequestParam String organization) {
+        return name + " " + email + " " + organization;
+    }
 }
