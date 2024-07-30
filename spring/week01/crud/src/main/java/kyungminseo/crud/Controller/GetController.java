@@ -1,5 +1,6 @@
 package kyungminseo.crud.Controller;
 
+import kyungminseo.crud.DTO.MemberDto;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -38,5 +39,10 @@ public class GetController {
             sb.append(map.getKey() + " " + map.getValue() + "\n");
         });
         return sb.toString();
+    }
+
+    @GetMapping(value = "/request3")
+    public String getRequestParam3(MemberDto memberDto) {
+        return memberDto.toString();
     }
 }
