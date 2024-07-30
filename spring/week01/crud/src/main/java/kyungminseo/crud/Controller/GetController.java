@@ -13,5 +13,8 @@ public class GetController {
         return "Hello World";
     }
 
-
+    @GetMapping(value = "/name")
+    public String getName() {
+        return "minseo";
+    }
 }
