@@ -1,3 +1,35 @@
+## Spring Annotation
+
+### Annotation
+
+코드에 특별한 기능을 수행하도록 명시해 주는 것
+
+- 컴파일러에게 코드 작성 문법 에러를 체크하도록 정보를 제공
+- 소프트웨어 개발 툴이 빌드나 배치시 코드를 자동으로 생성할 수 있도록 정보를 제공
+- 실행시(런타임시) 특정 기능을 실행하도록 정보를 제공
+
+### @RestController
+
+객체 데이터인 JSON 또는 XML 형식으로 HTTP 응답에 담아서 전송
+
+### @RequestMapping
+
+요청을 특정 메서드와 매핑하기 위해 사용하는 것이며, 여러개의 메소드에 공통적인 url은 class에 설정
+
+### @GetMapping
+
+@PostMapping
+@PutMapping
+@DeleteMapping
+
+각각 GET/POST/PUT/DELETE 요청을 특정 핸들러 메서드에 매핑하기 위한 어노테이션
+
+### @RequestBody
+
+@ResponseBody
+
+각각 HTTP요청 body를 자바객체로 변환하고 자바객체를 다시 HTTP 응답 body로 변환
+
 ## Django
 
 - python 언어로 이루어진 웹 애플리케이션 프레임워크.
