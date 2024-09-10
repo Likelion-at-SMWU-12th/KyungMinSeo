@@ -69,5 +69,13 @@ class ProductRepositoryTest {
             System.out.println(product.getPopularity() + "/" + product.getId() + "/" + product.getName() + "/" + product.getPrice() + "/" + product.getStock());
         }
 
+        List<Product> productList3 = productRepository.findTop10ByOrderByCreatedAtDesc();
+
+        System.out.println("-----최신순 TOP 10------");
+        for (Product product : productList2) {
+            System.out.println(product.getCreatedAt() + "/" + product.getPopularity() + "/" + product.getId() + "/" + product.getName() + "/" + product.getPrice() + "/" + product.getStock());
+        }
+
+
     }
 }
