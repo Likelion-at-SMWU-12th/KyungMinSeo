@@ -59,22 +59,24 @@ class ProductRepositoryTest {
             System.out.println("Product Name : " + product.getName());
             System.out.println("Product Price : " + product.getPrice());
             System.out.println("Product Stock : " + product.getStock());
-            System.out.println("----------------------");
+            System.out.println("----------------------\n");
         }
 
         List<Product> productList2 = productRepository.findTop10ByOrderByPopularityDesc();
 
         System.out.println("-----인기도 TOP 10------");
         for (Product product : productList2) {
-            System.out.println(product.getPopularity() + "/" + product.getId() + "/" + product.getName() + "/" + product.getPrice() + "/" + product.getStock());
+            System.out.println(product.getPopularity() + "\t" + product.getId() + "\t" + product.getName() + "\t" + product.getPrice() + "\t" + product.getStock());
         }
+        System.out.println("----------------------\n");
 
         List<Product> productList3 = productRepository.findTop10ByOrderByCreatedAtDesc();
 
         System.out.println("-----최신순 TOP 10------");
         for (Product product : productList2) {
-            System.out.println(product.getCreatedAt() + "/" + product.getPopularity() + "/" + product.getId() + "/" + product.getName() + "/" + product.getPrice() + "/" + product.getStock());
+            System.out.println(product.getCreatedAt() + "\t" + product.getPopularity() + "\t" + product.getId() + "\t" + product.getName() + "\t" + product.getPrice() + "\t" + product.getStock());
         }
+        System.out.println("----------------------\n");
 
 
     }
