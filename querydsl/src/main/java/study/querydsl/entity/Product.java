@@ -7,6 +7,9 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -21,10 +24,15 @@ public class Product {
     private String name;
     private int price;
     private int stock;
+    private long popularity; // 인기도
 
-    public Product(String name, int price, int stock) {
+    private LocalDateTime createdAt; // 등록 시간
+
+    public Product(String name, int price, int stock, long popularity) {
         this.name = name;
         this.price = price;
         this.stock = stock;
+        this.popularity = popularity;
+        this.createdAt = LocalDateTime.now();
     }
 }
