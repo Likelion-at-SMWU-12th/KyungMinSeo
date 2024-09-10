@@ -21,10 +21,12 @@ public class Product {
     private String name;
     private int price;
     private int stock;
+    private long popularity; // 인기도
 
-    public Product(String name, int price, int stock) {
+    public Product(String name, int price, int stock, long popularity) {
         this.name = name;
         this.price = price;
         this.stock = stock;
+        this.popularity = popularity;
     }
 }
