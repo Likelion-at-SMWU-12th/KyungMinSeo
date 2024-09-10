@@ -28,11 +28,17 @@ class ProductRepositoryTest {
     // 더미 데이터
     @BeforeEach
     void setUp() {
-        productRepository.save(new Product("펜", 1000, 100));
-        productRepository.save(new Product("연필", 500, 200));
-        productRepository.save(new Product("노트", 2000, 150));
-        productRepository.save(new Product("지우개", 300, 300));
-        productRepository.save(new Product("자", 700, 250));
+        productRepository.save(new Product("펜", 1000, 100, 20L));
+        productRepository.save(new Product("연필", 500, 200, 50L));
+        productRepository.save(new Product("노트", 2000, 150, 38L));
+        productRepository.save(new Product("지우개", 300, 300, 90L));
+        productRepository.save(new Product("자", 700, 250, 180L));
+        productRepository.save(new Product("펜", 1200, 50, 60L));
+        productRepository.save(new Product("테이프", 800, 80, 120L));
+        productRepository.save(new Product("풀", 600, 40, 110L));
+        productRepository.save(new Product("책", 3000, 20, 70L));
+        productRepository.save(new Product("필통", 2500, 15, 95L));
+        productRepository.save(new Product("샤프", 1500, 80, 85L));
     }
 
     @Test
@@ -48,12 +54,20 @@ class ProductRepositoryTest {
                 .fetch();
 
         for (Product product : productList) {
-            System.out.println("----------------------");
+            System.out.println("-----가장 비싼 펜------");
             System.out.println("Product Number : " + product.getId());
             System.out.println("Product Name : " + product.getName());
             System.out.println("Product Price : " + product.getPrice());
             System.out.println("Product Stock : " + product.getStock());
             System.out.println("----------------------");
         }
+
+        List<Product> productList2 = productRepository.findTop10ByOrderByPopularityDesc();
+
+        System.out.println("-----인기도 TOP 10------");
+        for (Product product : productList2) {
+            System.out.println(product.getPopularity() + "/" + product.getId() + "/" + product.getName() + "/" + product.getPrice() + "/" + product.getStock());
+        }
+
     }
 }
