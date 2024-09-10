@@ -1,15 +1,15 @@
 package study.querydsl.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -19,20 +19,31 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long number;
 
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private int price;
+
+    @Column(nullable = false)
     private int stock;
-    private long popularity; // 인기도
 
-    private LocalDateTime createdAt; // 등록 시간
+    @OneToOne(mappedBy = "product")
+    @ToString.Exclude   // 순환 참조 제거
+    ProductDetail productDetail;
 
-    public Product(String name, int price, int stock, long popularity) {
-        this.name = name;
-        this.price = price;
-        this.stock = stock;
-        this.popularity = popularity;
-        this.createdAt = LocalDateTime.now();
+    @ManyToOne
+    @JoinColumn(name = "provider_id")
+    @ToString.Exclude
+    private Provider provider;
+
+    @ManyToMany
+    @ToString.Exclude
+    private List<Producer> producers = new ArrayList<>();
+
+    public void addProducer(Producer producer) {
+        this.producers.add(producer);
     }
 }
