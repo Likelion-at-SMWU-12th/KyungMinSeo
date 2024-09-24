@@ -16,7 +16,12 @@ public class RestTemplateController {
     }
 
     @GetMapping
-    public String getName() { return restTemplateService.getName(); }
+    public String getName() {
+        return restTemplateService.getName();
+    }
 
-
+    @GetMapping("/path-variable")
+    public String getNameWithPathVariable() {
+        return restTemplateService.getNameWithPathVariable();
+    }
 }

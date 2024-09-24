@@ -22,4 +22,20 @@ public class RestTemplateService {
         ResponseEntity<String> responseEntity = restTemplate.getForEntity(uri, String.class);
         return responseEntity.getBody();
     }
+
+    public String getNameWithPathVariable() {
+        URI uri = UriComponentsBuilder
+                .fromUriString("http://localhost:9090")
+                .path("api/v1/crud-api/{name}")
+                .encode()
+                .build()
+                .expand("minseo")
+                .toUri();
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> responseEntity = restTemplate.getForEntity(uri, String.class);
+        return responseEntity.getBody();
+    }
+
+
 }
