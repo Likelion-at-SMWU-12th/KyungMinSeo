@@ -48,4 +48,21 @@ public class CustomExceptionHandler {
                 .status(e.getHttpStatus().getCode())
                 .body(map);
     }
+
+    @ExceptionHandler(value = ProductException.class)
+    public ResponseEntity<Map<String, String>> handleProductException(ProductException pe, HttpServletRequest request) {
+        // 에러 로그
+        LOGGER.error("Advice 내 handleProductException 호출, URI: {}, 메시지: {}",
+                request.getRequestURI(), pe.getMessage());
+        // 예외 정보 담기
+        Map<String, String> map = new HashMap<>();
+        map.put("error type", pe.getHttpStatus().getMessage());  // HttpStatus의 설명
+        map.put("code", Integer.toString(pe.getHttpStatus().getCode())); // HttpStatus 코드
+        map.put("message", pe.getMessage());  // 예외 메시지
+
+        // ResponseEntity로 반환
+        return ResponseEntity
+                .status(pe.getHttpStatus().getCode())
+                .body(map);
+    }
 }
