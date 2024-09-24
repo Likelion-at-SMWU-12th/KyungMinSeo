@@ -5,6 +5,16 @@ public class MemberDto {
     private String email;
     private String organization;
 
+    // 기본 생성자
+    public MemberDto() {}
+
+    // 3 필드 생성자
+    public MemberDto(String name, String email, String organization) {
+        this.name = name;
+        this.email = email;
+        this.organization = organization;
+    }
+
     // Getter, Setter
     public String getName() {
         return name;
