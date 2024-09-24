@@ -1,6 +1,7 @@
 package com.example.client.service;
 
 import com.example.client.dto.MemberDto;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -71,6 +72,33 @@ public class RestTemplateService {
         );
 
         return responseEntity;
+    }
+
+    public ResponseEntity<MemberDto> postWithHeader() {
+        URI uri = UriComponentsBuilder
+                .fromUriString("http://localhost:9090")
+                .path("api/v1/crud-api/add-header")
+                .encode()
+                .build()
+                .toUri();
+
+        MemberDto memberDto = new MemberDto();
+        memberDto.setName("minseo");
+        memberDto.setEmail("minseo@sm.ac.kr");
+        memberDto.setOrganization("likelion");
+
+        RequestEntity<MemberDto> requestEntity = RequestEntity
+                .post(uri)
+                .header("my-header", "headertext")
+                .body(memberDto);
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<MemberDto> responseEntity = restTemplate.exchange(
+                requestEntity, MemberDto.class
+        );
+
+        return responseEntity;
+
     }
 
 

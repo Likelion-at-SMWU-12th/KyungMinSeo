@@ -38,4 +38,9 @@ public class RestTemplateController {
         return restTemplateService.postWithParamAndBody();
     }
 
+    @PostMapping("/header")
+    public ResponseEntity<MemberDto> postWithHeader() {
+        return restTemplateService.postWithHeader();
+    }
+
 }
