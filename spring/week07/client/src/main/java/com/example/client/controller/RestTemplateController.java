@@ -24,4 +24,10 @@ public class RestTemplateController {
     public String getNameWithPathVariable() {
         return restTemplateService.getNameWithPathVariable();
     }
+
+    @GetMapping("/path-parameter")
+    public String getNameWithParameter() {
+        return restTemplateService.getNameWithParameter();
+    }
+
 }

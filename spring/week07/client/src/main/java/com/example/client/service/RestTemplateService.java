@@ -1,5 +1,6 @@
 package com.example.client.service;
 
+import com.example.client.dto.MemberDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -37,5 +38,19 @@ public class RestTemplateService {
         return responseEntity.getBody();
     }
 
+    public String getNameWithParameter() {
+        URI uri = UriComponentsBuilder
+                .fromUriString("http://localhost:9090")
+                .path("api/v1/crud-api/param")
+                .queryParam("name", "minseo")
+                .encode()
+                .build()
+                .toUri();
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> responseEntity = restTemplate.getForEntity(uri, String.class);
+        return responseEntity.getBody();
+    }
+    
 
 }
