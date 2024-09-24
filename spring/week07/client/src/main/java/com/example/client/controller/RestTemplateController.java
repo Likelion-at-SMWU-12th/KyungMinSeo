@@ -1,7 +1,10 @@
 package com.example.client.controller;
 
+import com.example.client.dto.MemberDto;
 import com.example.client.service.RestTemplateService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,6 +31,11 @@ public class RestTemplateController {
     @GetMapping("/path-parameter")
     public String getNameWithParameter() {
         return restTemplateService.getNameWithParameter();
+    }
+
+    @PostMapping()
+    public ResponseEntity<MemberDto> postDto() {
+        return restTemplateService.postWithParamAndBody();
     }
 
 }

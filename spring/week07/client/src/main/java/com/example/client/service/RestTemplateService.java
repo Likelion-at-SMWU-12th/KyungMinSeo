@@ -51,6 +51,27 @@ public class RestTemplateService {
         ResponseEntity<String> responseEntity = restTemplate.getForEntity(uri, String.class);
         return responseEntity.getBody();
     }
-    
+
+    public ResponseEntity<MemberDto> postWithParamAndBody() {
+        URI uri = UriComponentsBuilder
+                .fromUriString("http://localhost:9090")
+                .path("api/v1/crud-api")
+                .queryParam("name", "minseo")
+                .queryParam("email", "minseo@sm.ac.kr")
+                .queryParam("organization", "likelion")
+                .encode()
+                .build()
+                .toUri();
+
+        MemberDto memberDto = new MemberDto();
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<MemberDto> responseEntity = restTemplate.postForEntity(
+                uri, memberDto, MemberDto.class
+        );
+
+        return responseEntity;
+    }
+
 
 }
